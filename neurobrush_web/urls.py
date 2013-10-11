@@ -5,6 +5,8 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+
+    url(r'^', include('neurobrush_web.site.urls')),
     # Examples:
     # url(r'^$', 'neurobrush_web.views.home', name='home'),
     # url(r'^neurobrush_web/', include('neurobrush_web.foo.urls')),
