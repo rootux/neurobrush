@@ -16,8 +16,9 @@ CACHES = {
     }
 }
 
-STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-DEFAULT_FILE_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
-PIPELINE_ENABLED = False
+STATIC_S3 = 'STATIC_S3' in environ
+
+if DEBUG and not STATIC_S3:
+    STATIC_URL = '/static/'
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
