@@ -18,9 +18,9 @@ INSTALLED_APPS += (
     'gunicorn',
 )
 
-INSTALLED_APPS = INSTALLED_APPS + (
-    'raven.contrib.django.raven_compat',
-)
+# INSTALLED_APPS = INSTALLED_APPS + (
+#     'raven.contrib.django.raven_compat',
+# )
 
 STATICFILES_ROOT = PROJECT_DIR.child('static')
 STATIC_URL = '//' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
