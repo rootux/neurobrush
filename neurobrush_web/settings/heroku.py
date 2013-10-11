@@ -35,5 +35,17 @@ INSTALLED_APPS += (
 #     'raven.contrib.django.raven_compat',
 # )
 
-STATICFILES_ROOT = PROJECT_DIR.child('static')
-STATIC_URL = '//' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+# STATICFILES_ROOT = PROJECT_DIR.child('static')
+# STATIC_URL = '//' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+PIPELINE_ENABLED = False
+
