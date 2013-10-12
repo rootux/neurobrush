@@ -6,7 +6,8 @@ import dj_database_url
 ENV = 'HEROKU'
 DEBUG = True
 ALLOWED_HOSTS = [
-    'neurobrush.com'
+    'neurobrush.com',
+    'www.neurobrush.com'
 ]
 # ALLOWED_HOSTS = ['*']
 
