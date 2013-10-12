@@ -12,8 +12,10 @@ def collectData(request):
     splitted = eval(array)
     print splitted
     redis.set('ExcitementShortTerm', splitted['ExcitementShortTerm'])
-    #my_global = splitted['ExcitementShortTerm']
-    print splitted['ExcitementShortTerm']
-    #json.loads(splitted)
-    #excitementShortTerm = request.POST['ExcitementShortTerm']
-    #print excitementShortTerm
+    redis.set('ExcitementLongTerm', splitted['ExcitementLongTerm'])
+    redis.set('EngagementBoredom', splitted['EngagementBoredom'])
+    redis.set('FrustrationScore', splitted['FrustrationScore'])
+    redis.set('Lowerface', splitted['Lowerface'])
+    redis.set('LowerfaceValue', splitted['LowerfaceValue'])
+    redis.set('Upperface', splitted['Upperface'])
+    redis.set('UpperfaceValue', splitted['UpperfaceValue'])

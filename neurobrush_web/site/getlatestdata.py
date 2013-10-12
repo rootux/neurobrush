@@ -7,4 +7,21 @@ def getlatest(request):
     
     global redis
 
-    return redis.get('ExcitementShortTerm')
+    # ExcitementShortTerm = redis.get('ExcitementShortTerm')
+    # ExcitementLongTerm = redis.get('ExcitementLongTerm')
+    # FrustrationScore = redis.get('FrustrationScore')
+    # Lowerface = redis.get('Lowerface')
+    # LowerfaceValue = redis.get('LowerfaceValue')
+    # Upperface = redis.get('Upperface')
+    # UpperfaceValue = redis.get('UpperfaceValue')
+    
+    int_fields = { 'ExcitementShortTerm', 'ExcitementLongTerm', 'FrustrationScore', 'LowerfaceValue', 'UpperfaceValue'}
+    js_dict = { f: int(redis.get(f)) for f in int_fields }
+
+    str_fields = {'Lowerface', 'Upperface'}
+    js_dict.update( {f: redis.get(f) for f in str_fields} )
+
+
+    #create data
+
+    return js_dict
