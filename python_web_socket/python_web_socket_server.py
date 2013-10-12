@@ -15,7 +15,10 @@ from autobahn.websocket import WebSocketServerFactory, \
 
 
 class EchoServerProtocol(WebSocketServerProtocol):
-    
+    def onConnect(self, connectionRequest):
+      headers = {'Access-Control-Allow-Origin': '*'}
+      return (None, headers)
+
     def __init__(self):
       self.val1 = 50
       self.val2 = 50
@@ -126,7 +129,8 @@ if __name__ == '__main__':
 
    factory = WebSocketServerFactory("ws://localhost:9000",
                                     debug = debug,
-                                    debugCodePaths = debug)
+                                    debugCodePaths = debug, 
+                                    )
 
    factory.protocol = EchoServerProtocol
    listenWS(factory)
