@@ -15,24 +15,101 @@ from autobahn.websocket import WebSocketServerFactory, \
 
 
 class EchoServerProtocol(WebSocketServerProtocol):
+    
+    def __init__(self):
+      self.val1 = 50
+      self.val2 = 50
+      self.val3 = 50
+      self.val4 = 50
+      self.val5 = 50
 
-   def onMessage(self, msg, binary):
-      rand1 = random.randint(1, 100)
-      rand2 = random.randint(1, 100)
-      rand3 = random.randint(1, 100)
-      rand4 = random.randint(1, 100)
-      rand5 = random.randint(1, 100)
+      self.dir1 = 0
+      self.dir2 = 0
+      self.dir3 = 0
+      self.dir4 = 0
+      self.dir5 = 0
 
-      data = [ \
-                {'WirelessSignalStatus': rand1}, \
-                {'ExcitementShortTerm' : rand2}, \
-                {'ExcitementLongTerm' : rand3}, \
-                {'EngagementBoredom' : rand4}, \
-                {'FrustrationScore' : rand5}, \
+    def onMessage(self, msg, binary):
+      self.dir1 += random.randint(-1, 1)
+      self.dir2 += random.randint(-1, 1)
+      self.dir3 += random.randint(-1, 1)
+      self.dir4 += random.randint(-1, 1)
+      self.dir5 += random.randint(-1, 1)
+
+      if self.dir1 > 3: 
+        self.dir1 = 3
+
+      if self.dir2 > 3: 
+        self.dir2 = 3
+
+      if self.dir3 > 3: 
+        self.dir3 = 3
+
+      if self.dir4 > 3: 
+        self.dir4 = 3
+
+      if self.dir5 > 3: 
+        self.dir5 = 3
+      if self.dir1 < -3: 
+        self.dir1 = -3
+
+      if self.dir2 < -3: 
+        self.dir2 = -3
+
+      if self.dir3 < -3: 
+        self.dir3 = -3
+
+      if self.dir4 < -3: 
+        self.dir4 = -3
+
+      if self.dir5 < -3: 
+        self.dir5 = -3
+
+      self.val1 += self.dir1
+      self.val2 += self.dir2
+      self.val3 += self.dir3
+      self.val4 += self.dir4
+      self.val5 += self.dir5
+
+      if self.val1 > 100:
+        self.val1 = 100
+
+      if self.val2 > 100: 
+        self.val2 = 100
+
+      if self.val3 > 100: 
+        self.val3 = 100
+
+      if self.val4 > 100: 
+        self.val4 = 100
+
+      if self.val5 > 100: 
+        self.val5 = 100
+      if self.val1 < 0: 
+        self.val1 = 0
+
+      if self.val2 < 0: 
+        self.val2 = 0
+
+      if self.val3 < 0: 
+        self.val3 = 0
+
+      if self.val4 < 0: 
+        self.val4 = 0
+
+      if self.val5 < 0: 
+        self.val5 = 0
+
+
+      data = {'WirelessSignalStatus': self.val1}, \
+                {'ExcitementShortTerm' : self.val2}, \
+                {'ExcitementLongTerm' : self.val3}, \
+                {'EngagementBoredom' : self.val4}, \
+                {'FrustrationScore' : self.val5}, \
                 {'Upperface' : 'LeftWink'}, \
                 {'Lowerface' : 'Smile'}, \
-                {'LowerfaceValue' : rand1}, \
-                {'UpperfaceValue' : rand2}]
+                {'LowerfaceValue' : self.val1}, \
+                {'UpperfaceValue' : self.val2}
 
       json_data = json.dumps(data)
       self.sendMessage(msg, binary)

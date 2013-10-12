@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html>
    <head>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+      <script src="http://paperjs.org/assets/js/paper.js" type="text/javascript" charset="utf-8"></script>      
+
       <script type="text/javascript">
+
+      Array.prototype.move = function (old_index, new_index) {
+    if (new_index >= this.length) {
+        var k = new_index - this.length;
+        while ((k--) + 1) {
+            this.push(undefined);
+        }
+    }
+    this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+    return this; // for testing purposes
+};
+
          var sock = null;
          var ellog = null;
+
+         var globaldata = null;
 
          window.onload = function() {
 
@@ -26,16 +43,18 @@
 
             if (sock) {
                sock.onopen = function() {
-                  log("Connected to " + wsuri);
+                  console.log("Connected to " + wsuri);
                }
 
                sock.onclose = function(e) {
-                  log("Connection closed (wasClean = " + e.wasClean + ", code = " + e.code + ", reason = '" + e.reason + "')");
+                  console.log("Connection closed (wasClean = " + e.wasClean + ", code = " + e.code + ", reason = '" + e.reason + "')");
                   sock = null;
                }
 
                sock.onmessage = function(e) {
-                  log("Got echo: " + e.data);
+                  globaldata = e.data;
+
+                  // print to paper
                }
             }
          };
@@ -54,15 +73,167 @@
             ellog.innerHTML += m + '\n';
             ellog.scrollTop = ellog.scrollHeight;
          };
+
+
+
+         setInterval(function(){
+            send();
+
+         },1000);
       </script>
+
+      
+      <style type="text/css">
+      body {
+          margin: 0;
+          height: 2000px;
+      }
+      .rec { 
+          width: 100%;
+          height: 160px;
+          opacity: .85; /* layer alpha */
+          background-color: #5fcdb5; /* layer fill content */
+          bottom: 160px;
+          position: relative;
+      }
+      .logo {
+          width: 351px;
+          height: 45px;
+          padding: 54px 0 0 29px;
+      }
+      .back {
+          width: 100%;
+          height: 400px;
+          background-size: cover;
+      }
+      .fixed {
+          position:fixed;
+          bottom:0
+      }
+      .canvasdiv {
+         // background: gray;
+          width: 100%;
+          height: 100%;
+          margin: 50px auto;
+          position: fixed;
+          bottom: -50px;
+          z-index: -1;
+
+      }
+          canvas {
+              width: 100%;
+              height: 100%;
+          }
+
+          form {
+            display: none;
+          }
+      </style>
+
+
    </head>
    <body>
-      <h1>Neurobrush websocket listener tet</h1>
       <noscript>You must enable JavaScript</noscript>
+         <div class="canvasdiv">
+            <canvas style="position:absolute" id="canvas2" resize stats></canvas>
+
+        </div>
+<div style="display:none;">
       <form>
          <p>Message: <input id="message" type="text" size="50" maxlength="50" value="Hello, world!"></p>
       </form>
       <button onclick='send();'>Send Message (and initiate it)</button>
       <pre id="log" style="height: 20em; overflow-y: scroll; background-color: #f3f3f3;"></pre>
+   </div>
+
+   <div id="asdf" style="position: fixed;
+bottom: 61px;
+left: 286px;
+font-size: 30px;
+z-index: 6;">
+   </div>
+      <script type="text/paperscript"  canvas="canvas2"> 
+
+var point = view.center;
+
+var colors = [];
+var cycles = 1;
+for (var i = 0, l = 10; i < l; i++) {
+   var brightness = 1 - (i / l) * 1.5;
+   var hue = i / l * cycles * 360;
+   var color = {
+      hue: hue,
+      saturation: 1,
+      brightness: brightness
+   };
+   colors.push(color);
+}
+
+var radius = Math.max(view.size.width, view.size.height) * 0.75;
+
+var path = new Path.Rectangle({
+   rectangle: view.bounds,
+   fillColor: {
+      origin: point,
+      destination: point + [radius, 0],
+      gradient: {
+         stops: colors,
+         radial: true
+      }
+   }
+});
+
+var color = path.fillColor;
+var gradient = color.gradient;
+var mouseDown = false;
+var mousePoint = view.center;
+//
+var grow = false;
+var vector = new Point(150, 0);
+
+function onFrame() {
+   var ExcitementShortTerm;
+   if(globaldata) ExcitementShortTerm = eval(globaldata)[1].ExcitementShortTerm;
+   $("#asdf").html(ExcitementShortTerm);
+
+   var ExcitementLongTerm = eval(globaldata)[2].ExcitementLongTerm;
+   // var EngagementBoredom = eval(globaldata)[3].EngagementBoredom;
+   // var FrustrationScore = eval(globaldata)[4].FrustrationScore;
+   // var LeftWink = eval(globaldata)[5].LeftWink;
+   // var Lowerface = eval(globaldata)[6].Lowerface;
+   //    var LowerfaceValue = eval(globaldata)[6].LowerfaceValue;
+   // var Upperface = eval(globaldata)[7].Upperfacee;
+  // console.log(ExcitementShortTerm);
+   // var UpperfaceValue = eval(globaldata)[7].UpperfaceValue;
+
+   //gradient.stops.splice(0,0,gradient.stops[0]);
+   console.log(ExcitementShortTerm*5);
+   //gradient.stops[0].hue = ExcitementShortTerm/100
+   //gradient.stops.pop();
+   for (var i = 0, l = gradient.stops.length; i < l; i++)
+      gradient.stops[i].color.hue = 250+ExcitementShortTerm;
+   if (grow && vector.length > 300) {
+      grow = false;
+   } else if (!grow && vector.length < 75) {
+      grow = false;
+   }
+   
+      vector.length += (grow ? 1 : -1);
+      vector.angle += 5;
+   
+   color.highlight = mouseDown ? point : point + vector;
+}
+
+function onResize(event) {
+   point = view.center;
+   path.bounds = view.bounds;
+   var color = path.fillColor;
+   color.origin = point;
+   var radius = Math.max(view.size.width, view.size.height) * 0.75;
+   color.destination = point + [radius, 0];
+}
+
+</script>
+
    </body>
 </html>
