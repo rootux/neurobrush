@@ -22,13 +22,25 @@
 
 
         </style>
+<script type="text/javascript">
+$(document).scroll(function() {
+    if($(document).scrollTop() > 350 ) {
+        $(".rec").addClass("fixed");
+    }
+    else {
+        $(".rec").removeClass("fixed");
+    }
+});
 
+</script>
     </head>
     <body>
         <div class="back"></div>
-        <div class="rec">
+                <div class="rec">
             <img class="logo" src="{% static 'img/logo.png' %}" / >
         </div>
+        <div class="canvasdiv"></div>
+
 
                        {% block page_content %}{% endblock %}
 
