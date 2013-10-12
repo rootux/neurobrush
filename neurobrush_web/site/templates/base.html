@@ -152,16 +152,47 @@ var moveRainbow = new function() {
    var eyePosition = new Point();
    var eyeFollow = (Point.random() - 0.5);
    var blinkTime = 200;
+
+   function weighted_avg(a, b, weight) {
+      w = weight / 100.0;
+      return Math.ceil(a + ( b - a ) * w);
+   }
+
+   function color_wa(color1, color2, weight) {
+      rgb = [ weighted_avg(color1.r, color2.r, weight),
+              weighted_avg(color1.g, color2.g, weight),
+              weighted_avg(color1.b, color2.b, weight) ];
+      return "rgb("+rgb[0]+","+rgb[1]+","+rgb[2]+")";
+   }
+
    function createHead(vector, count) {
             //console.log(window.globaldata);
          var val = 0;
          if(typeof(globaldata) != "undefined" && globaldata != null) val = window.globaldata.ExcitementShortTerm;
          $("#asdf").html(val);
-         console.log(val);
+
+
+
+         var fru = 0;
+         if(typeof(globaldata) != "undefined" && globaldata != null) fru = window.globaldata.FrustrationScore;
 
             var colors = [];
+         var startcolor = { r  :0, g:0, b:0};
+         var endcolor = {r:255,g:0,b:0};
+
+         var frustartcolor = { r  :136, g:153, b:204};
+         var fruendcolor = {r:0,g:0,b:34};
+
+
+         var weightedcolor = color_wa(startcolor,endcolor,val)
+
+         var fruweightedcolor = color_wa(frustartcolor,fruendcolor,fru)
+         $("body").css("background-color",fruweightedcolor);
+
+         console.log(fru);
+
          for(var i=0;i<7;i++) {
-          colors[i] = "rgba(0,0,"+Math.ceil(val*2.5)+",1)";
+          colors[i] = weightedcolor;
             paths[i].fillColor = colors[i];
           }
           //console.log(colors)
@@ -252,7 +283,7 @@ top: 19px;"/>
 
          <script type="text/javascript">
           setInterval(function(){
-            $.getJSON("http://neurobrush.com/getlatest",{},function(data){
+            $.getJSON("http://localhost:8000/getlatest",{},function(data){
                     window.globaldata = data;
             });
         },1000);
