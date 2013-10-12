@@ -22,6 +22,6 @@ def collect(request):
     return HttpResponse(status=200)
 
 def getLatestData(request):
-    data = getlatestdata(request)
+    data = getlatest(request)
     html = "<html><body>It is now %s.</body></html>" % data
     return HttpResponse(html)
