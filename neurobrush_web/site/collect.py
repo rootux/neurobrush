@@ -17,7 +17,7 @@ def collectData(request):
     splitted = eval(array)
     print splitted
     redis.set('ExcitementShortTerm', splitted['ExcitementShortTerm'])
-    #redis.set('ExcitementLongTerm', splitted['ExcitementLongTerm'])
+    redis.set('ExcitementLongTerm', splitted['ExcitementLongTerm'])
     redis.set('EngagementBoredom', splitted['EngagementBoredom'])
     redis.set('FrustrationScore', splitted['FrustrationScore'])
     redis.set('Lowerface', splitted['Lowerface'])
