@@ -228,7 +228,6 @@ var moveRainbow = new function() {
 
    return function(vector, event) {
 
-
       var vector = (view.center - position) / 10;
 
       if (vector.length < 5)
@@ -283,7 +282,7 @@ top: 19px; width: 116px; height: 116px;"/>
 
          <script type="text/javascript">
           setInterval(function(){
-            $.getJSON("http://localhost:8000/getlatest",{},function(data){
+            $.getJSON("http://neurobrush.com:8000/getlatest",{},function(data){
                     window.globaldata = data;
             });
         },1000);
