@@ -24,5 +24,4 @@ def collect(request):
 
 def getLatestData(request):
     data = getlatest(request)
-    # html = "<html><body>It is now %s.</body></html>" % data
     return HttpResponse(json.dumps(data))

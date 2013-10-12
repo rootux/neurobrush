@@ -23,5 +23,5 @@ def getlatest(request):
 
 
     #create data
-
+    print js_dict
     return js_dict
