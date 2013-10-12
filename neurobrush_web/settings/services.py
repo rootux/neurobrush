@@ -1,5 +1,6 @@
-from os import environ
+import os
 
+from os import environ
 
 #S3
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
