@@ -4,7 +4,7 @@ from .base import *
 import dj_database_url
 
 ENV = 'HEROKU'
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
     'neurobrush.com'
 ]
