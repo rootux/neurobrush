@@ -5,7 +5,6 @@ REDIS_URL = 'redis://redistogo:ed568b706b4474886cf3bbd5161e2166@tarpon.redistogo
 redis = redis.from_url(REDIS_URL)
 def getlatest(request):
     
-    #TODO!!!
     global redis
 
     return redis.get('ExcitementShortTerm')

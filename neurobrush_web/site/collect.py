@@ -6,11 +6,11 @@ REDIS_URL = 'redis://redistogo:ed568b706b4474886cf3bbd5161e2166@tarpon.redistogo
 redis = redis.from_url(REDIS_URL)
 def collectData(request):
     
-    #TODO!!!
     global redis
 
     array = request.POST.items()[0][0]
     splitted = eval(array)
+    print splitted
     redis.set('ExcitementShortTerm', splitted['ExcitementShortTerm'])
     #my_global = splitted['ExcitementShortTerm']
     print splitted['ExcitementShortTerm']
