@@ -1,19 +1,24 @@
 import ast
 import redis
 
-REDIS_URL = 'redis://redistogo:ed568b706b4474886cf3bbd5161e2166@tarpon.redistogo.com:10054'
+#REDIS_URL = 'redis://redistogo:ed568b706b4474886cf3bbd5161e2166@tarpon.redistogo.com:10054'
+REDIS_URL='redis://132.168.153.32:6379'
 
 redis = redis.from_url(REDIS_URL)
 def collectData(request):
     
-    #TODO!!!
     global redis
 
     array = request.POST.items()[0][0]
+    print 'about to eval:'
+    print array
     splitted = eval(array)
+    print splitted
     redis.set('ExcitementShortTerm', splitted['ExcitementShortTerm'])
-    #my_global = splitted['ExcitementShortTerm']
-    print splitted['ExcitementShortTerm']
-    #json.loads(splitted)
-    #excitementShortTerm = request.POST['ExcitementShortTerm']
-    #print excitementShortTerm
+    redis.set('ExcitementLongTerm', splitted['ExcitementLongTerm'])
+    redis.set('EngagementBoredom', splitted['EngagementBoredom'])
+    redis.set('FrustrationScore', splitted['FrustrationScore'])
+    redis.set('Lowerface', splitted['Lowerface'])
+    redis.set('LowerfaceValue', splitted['LowerfaceValue'])
+    redis.set('Upperface', splitted['Upperface'])
+    redis.set('UpperfaceValue', splitted['UpperfaceValue'])
