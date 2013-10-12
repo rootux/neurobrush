@@ -19,7 +19,15 @@ def collectData(request):
     redis.set('ExcitementLongTerm', splitted['ExcitementLongTerm'])
     redis.set('EngagementBoredom', splitted['EngagementBoredom'])
     redis.set('FrustrationScore', splitted['FrustrationScore'])
-    redis.set('Lowerface', splitted['Lowerface'] or '')
+    
+    if splitted['Lowerface']:
+        redis.set('Lowerface', splitted['Lowerface'])
+    else:
+        redis.set('Lowerface', splitted[''])
+
     redis.set('LowerfaceValue', splitted['LowerfaceValue'])
-    redis.set('Upperface', splitted['Upperface'] or '')
+    if splitted['Upperface']:
+        redis.set('Upperface', splitted['Upperface'])
+    else:
+        redis.set('Upperface', splitted[''])
     redis.set('UpperfaceValue', splitted['UpperfaceValue'])
