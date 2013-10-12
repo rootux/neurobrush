@@ -14,6 +14,8 @@
         <link href="{% static 'css/neurobrush.css'%}" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="{% static 'js/neurobrush.js' %}" type="text/javascript"></script>       
+        <script src="{% static 'js/paper/paper-full.js' %}" type="text/javascript"></script>       
+
         <style type="text/css">
 
 .back {
@@ -39,7 +41,10 @@ $(document).scroll(function() {
                 <div class="rec">
             <img class="logo" src="{% static 'img/logo.png' %}" / >
         </div>
-        <div class="canvasdiv"></div>
+        <div class="canvasdiv">
+            <canvas style="position:absolute" id="canvas" resize stats></canvas>
+
+        </div>
 
 
                        {% block page_content %}{% endblock %}
