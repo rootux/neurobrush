@@ -1,7 +1,8 @@
 import ast
 import redis
 
-REDIS_URL = 'redis://redistogo:ed568b706b4474886cf3bbd5161e2166@tarpon.redistogo.com:10054'
+#REDIS_URL = 'redis://redistogo:ed568b706b4474886cf3bbd5161e2166@tarpon.redistogo.com:10054'
+REDIS_URL='redis://132.168.153.32:6379'
 
 redis = redis.from_url(REDIS_URL)
 def collectData(request):
