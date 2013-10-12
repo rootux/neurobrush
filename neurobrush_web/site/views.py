@@ -24,4 +24,6 @@ def collect(request):
 
 def getLatestData(request):
     data = getlatest(request)
+    response = HttpResponse(json.dumps(data))
+    response['Access-Control-Allow-Origin'] = '*'
     return HttpResponse(json.dumps(data))
