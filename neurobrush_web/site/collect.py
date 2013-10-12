@@ -10,7 +10,6 @@ def collectData(request):
     global redis
 
     array = request.POST.items()[0][0]
-    if not array: return
 
     print 'about to eval:'
     print array
