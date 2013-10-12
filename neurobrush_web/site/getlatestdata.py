@@ -16,7 +16,7 @@ def getlatest(request):
     # UpperfaceValue = redis.get('UpperfaceValue')
     
     int_fields = { 'ExcitementShortTerm', 'ExcitementLongTerm', 'FrustrationScore', 'LowerfaceValue', 'UpperfaceValue'}
-    js_dict = { f: int(redis.get(f)) for f in int_fields }
+    js_dict = { f: int(redis.get(f) or 0) for f in int_fields }
 
     str_fields = {'Lowerface', 'Upperface'}
     js_dict.update( {f: redis.get(f) for f in str_fields} )
