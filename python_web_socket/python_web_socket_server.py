@@ -16,6 +16,10 @@ from autobahn.websocket import WebSocketServerFactory, \
 
 class EchoServerProtocol(WebSocketServerProtocol):
 
+   def onConnect(self, connectionRequest):
+      headers = {'Access-Control-Allow-Origin': '*'}
+      return (None, headers)
+
    def onMessage(self, msg, binary):
       rand1 = random.randint(1, 100)
       rand2 = random.randint(1, 100)
@@ -23,8 +27,7 @@ class EchoServerProtocol(WebSocketServerProtocol):
       rand4 = random.randint(1, 100)
       rand5 = random.randint(1, 100)
 
-      data = [ \
-                {'WirelessSignalStatus': rand1}, \
+      data =    {'WirelessSignalStatus': rand1}, \
                 {'ExcitementShortTerm' : rand2}, \
                 {'ExcitementLongTerm' : rand3}, \
                 {'EngagementBoredom' : rand4}, \
@@ -32,7 +35,7 @@ class EchoServerProtocol(WebSocketServerProtocol):
                 {'Upperface' : 'LeftWink'}, \
                 {'Lowerface' : 'Smile'}, \
                 {'LowerfaceValue' : rand1}, \
-                {'UpperfaceValue' : rand2}]
+                {'UpperfaceValue' : rand2}
 
       json_data = json.dumps(data)
       self.sendMessage(msg, binary)
@@ -49,7 +52,8 @@ if __name__ == '__main__':
 
    factory = WebSocketServerFactory("ws://localhost:9000",
                                     debug = debug,
-                                    debugCodePaths = debug)
+                                    debugCodePaths = debug, 
+                                    )
 
    factory.protocol = EchoServerProtocol
    listenWS(factory)
