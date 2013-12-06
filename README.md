@@ -16,7 +16,7 @@ we did and create a real-time unique experience
 Demo
 ====
 the demo is live <http://neurobrush.com> - data doesn't get updated, but its just to get the idea
-![The team](https://raw.github.com/rootux/neurobrush/master/demo/images/demo.png "The team")
+![Live demo](https://raw.github.com/rootux/neurobrush/master/demo/images/demo.png "Live demo")
 
 Project Structure
 ================
