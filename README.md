@@ -40,17 +40,20 @@ How do I make it run?
 ====================
 Configuration
 
-Locally:
+**Locally**:
+
  1.Connect a Emotiv helmet, or use EmoCompser (the emulator)
 
  2.Update EmoStateLog.java. set targetURL
 
-Server:
+**Server**:
+
  1.Setup a server (We've used Heroku) that runs the django neurobrush_web.
 
  2.Under neurobrush_web->site->templates->collect.py set REDIS_URL
 
  3.Under neurobrush_web->site->templates->getlatestdata.py set REDIS_URL
 
-released under MIT license.
+released under MIT license (view LICENSE).
+
 enjoy
