@@ -8,7 +8,16 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.*;
 
 
-/** Simple example of JNA interface mapping and usage. */
+/** 
+* Based on the original EmoState example with modifications
+*
+* The main class that handles getting data from Emo device
+* or from Emo Emulator (AKA EmoComposer), sanitize it,
+* encode it and send it to the server.
+* use option - 1 for Emotiv device
+*            - 2 for Emotic emulator (AKA EmoComposer)
+* Set targetURL for your site data collection method
+*/
 public class EmoStateLog 
 {      
 
@@ -126,11 +135,6 @@ public class EmoStateLog
 					
 					System.out.print("Is Eye Open:");
 					System.out.println(EmoState.INSTANCE.ES_ExpressivIsEyesOpen(eState));
-					
-					//System.out.println("CognitivGetCurrentAction: ");
-					//System.out.println(EmoState.INSTANCE.ES_CognitivGetCurrentAction(eState));
-					//System.out.print("CurrentActionPower: ");
-					//System.out.println(EmoState.INSTANCE.ES_CognitivGetCurrentActionPower(eState));
 					
 					//create string
 

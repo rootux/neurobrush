@@ -1,8 +1,13 @@
 import ast
 import redis
 
+"""
+Collects the json data from the local machine to the server
+The data is collected and set in the local redis server
+"""
+
 #REDIS_URL = 'redis://localhost:6379'
-REDIS_URL = 'redis://redistogo:ed568b706b4474886cf3bbd5161e2166@tarpon.redistogo.com:10054'
+REDIS_URL = 'redis://redistogo:ec568a103b3474221cc3abd1121e2166@tarpon.redistogo.com:10054'
 
 redis = redis.from_url(REDIS_URL)
 def collectData(request):

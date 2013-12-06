@@ -1,0 +1,63 @@
+
+<!-- saved from url=(0031)http://neurobrush.com/getlatest -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css"></style><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style></head><body><link rel="stylesheet" type="text/css" href="chrome-extension://chklaanhfefbnpoihckbnefhakgolnmc/jsonview-core.css"><style>body {
+  white-space: pre;
+  font-family: monospace;
+}
+
+.property {
+  font-weight: bold;
+}
+
+.type-null {
+  color: gray;
+}
+
+.type-boolean {
+  color: firebrick;
+}
+
+.type-number {
+  color: blue;
+}
+
+.type-string {
+  color: green;
+}
+
+.callback-function {
+  color: gray;
+}
+
+.collapser:after {
+  content: "-";
+}
+
+.collapsed > .collapser:after {
+  content: "+";
+}
+
+.ellipsis:after {
+  content: " … ";
+}
+
+.collapsible {
+  margin-left: 2em;
+}
+
+.hoverable {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 2px;
+}
+
+.hovered {
+  background-color: rgba(235, 238, 249, 1);  
+}
+
+.collapser {
+  padding-right: 6px;
+  padding-left: 6px;
+}</style><div id="json"><div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">ExcitementShortTerm</span>: <span class="type-number">93</span>,</div></li><li><div class="hoverable"><span class="property">FrustrationScore</span>: <span class="type-number">44</span>,</div></li><li><div class="hoverable"><span class="property">Upperface</span>: <span class="type-string">"LeftWink"</span>,</div></li><li><div class="hoverable"><span class="property">LowerfaceValue</span>: <span class="type-number">0</span>,</div></li><li><div class="hoverable"><span class="property">ExcitementLongTerm</span>: <span class="type-number">94</span>,</div></li><li><div class="hoverable"><span class="property">Lowerface</span>: <span class="type-string">"Smile"</span>,</div></li><li><div class="hoverable"><span class="property">UpperfaceValue</span>: <span class="type-number">0</span></div></li></ul>}</div><div class="status"></div><div class="toolbox"><span title="expand all">+</span><span title="reduce all">-</span><a target="_blank" href="view-source:http://neurobrush.com/getlatest">View source</a><img title="options" src="chrome-extension://chklaanhfefbnpoihckbnefhakgolnmc/options.png"></div><span style="margin: 0px auto; border: 2px dotted rgb(255, 165, 0); position: absolute; z-index: 2147483647; visibility: hidden; left: 110px; width: 0px; top: 207px; height: 0px;"></span><span style="z-index: 2147483647; position: absolute; visibility: hidden; left: 95px; width: 50px; top: 192px; height: 20px; font-size: 10px; color: black;"></span></body></html>
