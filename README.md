@@ -41,19 +41,12 @@ How do I make it run?
 Configuration
 
 Locally:
--Connect a Emotiv helmet, or use EmoCompser (the emulator)
--Update EmoStateLog.java. set targetURL
+ 1.Connect a Emotiv helmet, or use EmoCompser (the emulator)
+ 2.Update EmoStateLog.java. set targetURL
 
 Server:
--Setup a server (We've used Heroku) that runs the django neurobrush_web.
--Under neurobrush_web->site->templates->collect.py set REDIS_URL
--Under neurobrush_web->site->templates->getlatestdata.py set REDIS_URL
-
-Others
-======
-
-cpp_web_socket
--------------
-a half baked work - you can hack it if you prefer c++ over java as the data_publisher
+ 1.Setup a server (We've used Heroku) that runs the django neurobrush_web.
+ 2.Under neurobrush_web->site->templates->collect.py set REDIS_URL
+ 3.Under neurobrush_web->site->templates->getlatestdata.py set REDIS_URL
 
 enjoy

@@ -2,8 +2,8 @@
 // Name        : emoreader.cpp
 // Author      : 
 // Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Copyright   : 
+// Description : a half baked work - you can hack it if you prefer c++ over java as the data_publisher
 //============================================================================
 
 #include <iostream>

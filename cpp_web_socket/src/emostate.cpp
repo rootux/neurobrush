@@ -1,6 +1,6 @@
 /*
  * emostate.cpp
- *
+ * a half baked work - you can hack it if you prefer c++ over java as the data_publisher
  *  Created on: Oct 12, 2013
  *      Author: yitzikc
  */
