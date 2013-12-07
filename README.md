@@ -1,21 +1,20 @@
 About the project
 =================
-Weekend long Hackathon @google, Tel Aviv (<http://brainihack.org/>)
-we decided to create a machine that reads user brain waves using Emotiv device,
-and output those users feeling into the web.
+At a weekend long Hackathon @Google Campus, Tel Aviv (<http://brainihack.org/>)
+we decided to create a machine that reads brainwaves of users using an Emotiv device,
+and output those users’ feeling into the web.
+
 
 A project by [@galbracha](https://twitter.com/galbracha) [@bArmageddon](https://twitter.com/bArmageddon) [@Jishai](https://twitter.com/Jishai) [@daniik](https://twitter.com/DaniiK) [@yitzikc](https://twitter.com/yitzikc)
 ![The team](https://raw.github.com/rootux/neurobrush/master/demo/images/the_team.jpg "The team")
 
-we "accidently" created a by-product that exposes the emotiv
-data to the web in a json format.
+We "accidently" created a by-product that exposes the Emotiv data to the web in a JSON format.
 
-by doing so we allow javascript developer write on top of what
-we did and create a real-time unique experience
+By doing so we allow JavaScript developers to write on top of what we did and create a unique real-time experience.
 
 Demo
 ====
-the demo is live <http://neurobrush.com> - data doesn't get updated, but its just to get the idea
+The demo is live <http://neurobrush.com> - the data doesn't get updated, but it gives you the idea and feeling of the project. 
 ![Live demo](https://raw.github.com/rootux/neurobrush/master/demo/images/demo.png "Live demo")
 
 Project Structure
@@ -23,20 +22,17 @@ Project Structure
 
 Local - data_publisher (Java Code)
 --------------
-Run this one locally.
-Reads data from Emotiv helmet or Emotiv emulator, sanitize it, encode it,
-and send it to the server
+Run this one locally. Reads data from Emotiv helmet or Emotiv emulator, sanitize it, encode it, and send it to the server.
 
 Server - neurobrush_web (Django)
 --------------
-Djano app that act as the server endpoint
-It exposes 2 methods: `collect()` and `getlatestdata()`
-collect will recieve data from your local computer
-getlatestdata will output the latest data in a json format
-the base.html also contains a live socket that updates when getlatestdata updates
+Django app that acts as the server endpoint. It exposes 2 methods: `collect()` and `getlatestdata()`
+collect() will receive data from your local computer
+getlatestdata() will output the latest data in a JSON format. The base.html also contains a live socket that updates when getlatestdata updates.
 
 
-How do I make it run?
+
+How to make it run?
 ====================
 Configuration
 
@@ -54,6 +50,6 @@ Configuration
 
  3.Under neurobrush_web->site->templates->getlatestdata.py set REDIS_URL
 
-released under MIT license (view LICENSE).
+Released under MIT license (see LICENSE).
 
-enjoy
+ENJOY! 
